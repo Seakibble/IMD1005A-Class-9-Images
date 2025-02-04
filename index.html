@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 9 - Images</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- We want to display high-resolution images if the page is very wide, and lower resolution images if the page is narrow. This saves data because we can serve smaller files without losing any quality. -->
+    <!-- Naive approach to serving images - showing and hiding them with CSS and media queries. -->
+    <!-- This doesn't actually work because the page is still loading the images, we're just choosing whether or not to display them. -->
+    <!-- A real solution should prevent the images from being loaded in the first place if they're not needed. -->
+    <!-- <img class="big" src="images/mountain-original.jpg" alt="Mountain">
+    <img class="small" src="images/mountain-small.jpg" alt="Mountain"> -->
+
+    <!-- Displaying images at different screen widths -->
+    <img 
+        srcset="images/mountain-original.jpg 1920w,
+                images/mountain-medium.jpg 1440w,
+                images/mountain-small.jpg 960w"
+        sizes="(max-width: 960px) 960px,
+               (max-width: 1440px) 1440px,
+               (min-width: 1440px) 1920px"
+        src="images/mountain-original.jpg" 
+        alt="Mountain">
+
+
+    <!-- Displaying images for different screen pixel densities (i.e. phones vs desktop vs 4k monitors) -->
+    <img 
+        srcset="images/mountain-400.jpg,
+                images/mountain-800.jpg 2x,
+                images/mountain-1200.jpg 3x"
+        src="images/mountain-400.jpg"
+        alt="Mountain">
+
+    <!-- Displaying images both at different screen widths *and* different pixel densities -->
+    <picture>
+        <source srcset="images/elephant-480x.jpg,
+                        images/elephant-960x.jpg 2x,
+                        images/elephant-1440x.jpg 3x"
+                media="(max-width: 480px)">
+        <source srcset="images/elephant-640x.jpg,
+                        images/elephant-1280x.jpg 2x,
+                        images/elephant-1920x.jpg 3x" 
+                media="(max-width: 640px)">
+        <source srcset="images/elephant-960x.jpg,
+                        images/elephant-1920x.jpg 2x,
+                        images/elephant-2880x.jpg 3x" 
+                media="(min-width: 641px)">
+
+        <img src="images/elephant-1280x.jpg" alt="Mountain">
+    </picture>
+</body>
+</html>

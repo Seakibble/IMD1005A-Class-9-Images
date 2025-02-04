@@ -1,0 +1,16 @@
+body {
+    background-color: green;
+}
+
+.small {
+    display: none;
+}
+
+@media screen and (width < 950px) {
+    .small {
+        display: block;
+    }
+    .big {
+        display: none;
+    }
+}
